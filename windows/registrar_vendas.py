@@ -1,5 +1,5 @@
 from tkinter import Tk, StringVar, Label, Entry, Button, ttk
-from tkinter.messagebox import showinfo, showerror, askyesno
+from tkinter.messagebox import showinfo, showerror
 from models.vendas_dao import Vendas
 from models.produtos_dao import Produtos
 from datetime import datetime
@@ -248,7 +248,6 @@ class V_Window:
         table_data = self.treeview.selection()
 
         if len(table_data) > 0:
-            askyesno('Confirmar Exclusão', 'Tem certeza que deseja excluir esta venda?')
             showinfo('Dados Excluidos', 'A venda foi excluida com sucesso.')
             self.vendas.delete(int(table_data[0]))
             self.limpar_campos()
