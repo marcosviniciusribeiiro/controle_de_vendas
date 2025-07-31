@@ -1,0 +1,6 @@
+connection/__pycache__/connect.cpython-313.pyc
+models/__pycache__/produtos_dao.cpython-313.pyc
+models/__pycache__/vendas_dao.cpython-313.pyc
+windows/__pycache__/cadastrar_produtos.cpython-313.pyc
+windows/__pycache__/registrar_vendas.cpython-313.pyc
+dados.db
