@@ -92,8 +92,6 @@ class V_Window:
         refresh_button.pack(pady=8)
 
     def ao_clicar_inserir(self):
-        print('[DEBUG] Função ao_clicar_inserir foi chamada')
-
         data = self.data.get().strip()
         produto_id = self.produto_id.get().strip()
         quantidade = self.quantidade.get().strip()
@@ -157,11 +155,6 @@ class V_Window:
                 return False
             
             self.produtos.atualizar_estoque(produto_id, nova_quantidade)
-
-            showinfo('Venda Registrada', 
-                     f'A venda foi adicionada com sucesso.\n\n'
-                     f'Data: {data}\nProduto ID: {produto_id}\n'
-                     f'Quantidade: {quantidade}\nTotal: R$ {total_calculado:.2f}')
 
             self.limpar_campos()
             self.populate_table()
@@ -230,10 +223,6 @@ class V_Window:
                     return False
                 
                 self.produtos.atualizar_estoque(produto_id, nova_quantidade)
-                showinfo('Venda Atualizada',
-                     f'A venda foi atualizada com sucesso.\n\n'
-                     f'Data: {data}\nProduto ID: {produto_id}\n'
-                     f'Quantidade: {quantidade}\nTotal: R$ {total_calculado:.2f}')
 
                 self.limpar_campos()
                 self.populate_table()
@@ -244,7 +233,6 @@ class V_Window:
 
 
     def deletar_venda(self):
-        print('Clicou no Botão')
         table_data = self.treeview.selection()
 
         if len(table_data) > 0:
@@ -316,7 +304,7 @@ class V_Window:
             preco = float(produto[2])
             total = preco * qtd
             total = round(total, 2)
-            print(f'Calcular_total_venda -> Preço Unitário: {preco}, Quantidade: {qtd}, Total: {total}')
+            print(f'Preço Unitário: {preco}, Quantidade: {qtd}, Total: {total}')
             return total
         except (IndexError, ValueError):
             showerror('Erro', 'Erro ao calcular o total da venda.')
@@ -330,7 +318,6 @@ class V_Window:
         self.total.set('')
 
     def carregar_tabela(self):
-        print('Clicou no Botão')
         self.populate_table()
 
     def populate_variables(self, event=None):
