@@ -88,9 +88,7 @@ class P_Window:
     def cadastrar_produto(self, nome: str, preco: str, estoque: str) -> None:
         if self.validar_preco_estoque(preco, estoque):
             if self.produtos.insert(nome, self.__new_preco__, self.__new_estoque__):
-                self.nome.set('')
-                self.preco.set('')
-                self.estoque.set('')
+                self.limpar_campos()
                 self.populate_table()
                 showinfo('Dados Cadastrados', 'O produto foi cadastrado com sucesso.')
             
@@ -100,10 +98,7 @@ class P_Window:
     def atualizar_produto(self, id: str, nome: str, preco: str, estoque: str) -> None:
         if self.validar_preco_estoque(preco, estoque):
             if self.produtos.update(int(id), nome, self.__new_preco__, self.__new_estoque__):
-                self.id.set('')
-                self.nome.set('')
-                self.preco.set('')
-                self.estoque.set('')
+                self.limpar_campos()
                 self.populate_table()
                 showinfo('Dados Atualizados', 'O produto foi atualizado com sucesso.')
             else:
@@ -113,15 +108,17 @@ class P_Window:
         table_data = self.treeview.selection()
         if len(table_data) > 0:
             if self.produtos.delete(int(table_data[0])):
-                self.id.set('')
-                self.nome.set('')
-                self.preco.set('')
-                self.estoque.set('')
+                self.limpar_campos()
                 self.populate_table()
                 showinfo('Dados Excluidos', 'O produto foi excluido com sucesso.')
             else:
                 showerror('Erro', 'Não foi possível excluir o produto.')
-  
+    def limpar_campos(self):
+        self.id.set('')
+        self.nome.set('')
+        self.preco.set('')
+        self.estoque.set('')
+
     def recarregar_tabela(self):
         self.populate_table()
 
