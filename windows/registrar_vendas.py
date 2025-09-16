@@ -155,10 +155,9 @@ class V_Window:
                 return False
             
             self.produtos.atualizar_estoque(produto_id, nova_quantidade)
-
             self.limpar_campos()
             self.populate_table()
-
+            showinfo('Dados Cadastrados', 'A venda foi cadastrada com sucesso.')
             return True
         else:
             showerror('Erro', 'Erro ao inserir a venda no banco de dados.')
@@ -223,9 +222,9 @@ class V_Window:
                     return False
                 
                 self.produtos.atualizar_estoque(produto_id, nova_quantidade)
-
                 self.limpar_campos()
                 self.populate_table()
+                showinfo('Dados Atualizados', 'A venda foi atualizada com sucesso.')
                 return True
         except Exception as e:
             showerror('Erro', f'Ocorreu um erro inesperado ao atualizar a venda: {e}')
